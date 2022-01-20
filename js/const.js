@@ -7,3 +7,5 @@ let preview
 let i = 0
 let arrTrackList = []
 let divClassTrack = document.querySelector(".track");
+let treckList = document.querySelector('.treckList');
+let artistName;

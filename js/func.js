@@ -1,118 +1,91 @@
 function sum2Parameter(a, b) {
-  return (a + b);
+  return a + b;
 }
 
 
-let artistName
 
 // отправка запроса и получение ответа
 function createUrl() {
-   urlSabmit = (sum2Parameter(url, inputSearchValue.value))
-//alert(urlSabmit)
-//console.log(inputSearchValue.value)
-fetch(urlSabmit, {
-method: "GET",
-headers: {
-  "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
-  "x-rapidapi-key": "63139df467msh62775601a5f1143p1aa727jsna2352e2ddc8e",
-},
-})
-.then((response) => response.json())
-.then((json) => {
-  json.data.forEach(element => {
-   console.log(' Album name: ' + element.album.title + '\n', 
-   'Artist name: ' + element.artist.name +  '\n',
-   'Song name: ' + element.title + '\n',
-   'Song preview: ' + element.preview + '\n') 
+  arrTrackList.length = 0;
+  urlSabmit = sum2Parameter(url, inputSearchValue.value);
+  //alert(urlSabmit)
+  //console.log(inputSearchValue.value)
+  fetch(urlSabmit, {
+    method: "GET",
+    headers: {
+      "x-rapidapi-host": "deezerdevs-deezer.p.rapidapi.com",
+      "x-rapidapi-key": "63139df467msh62775601a5f1143p1aa727jsna2352e2ddc8e",
+    },
+  })
+    .then((response) => response.json())
+    .then((json) => {
+      // console.log(
+      // " Total: " + json.total +'\n', 
+      // "Next: " + json.next + '\n',
+      // ".than json", json);
 
-  
-  //   console.log("Artist: \n" + `${json.data[key].album.title}` +'\n');
-  //     console.log("Abum: \n" + `${json.data[key].artist.name}` +'\n'); 
+      
+      json.data.forEach((element) => {
+                arrTrackList.push({
+          artistName: element.artist.name,
+          albumName: element.album.title,
+          songName: element.title,
+          songPreview: element.preview,
+        });
+        
 
 
-  });
- 
-  console.log('.than json', json)
+        // console.log(
+        //   " Artist name: " + element.artist.name + "\n",
+        //   "Album name: " + element.album.title + "\n",
+        //   "Song name: " + element.title + "\n",
+        //   "Song preview: " + element.preview + "\n"
+        // );
+      });
+      
 
-})
+      
+    })
+    .catch(err => {
+      console.error(err);
+    });
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+console.log(arrTrackList);
 
 // document.write('<ol start="0">');
 // dataJson[key].forEach( animal => {
-//   document.write(`<li>ID:  ${animal.artist.id} <span style="color: #1a55cc">${animal.artist.name}</span> 
+//   document.write(`<li>ID:  ${animal.artist.id} <span style="color: #1a55cc">${animal.artist.name}</span>
 //            is ${animal.preview} years old.</li>`);
 // });
 // document.write('<ol>');
 
+// document.querySelector(
+//   ".track"
+// ).innerHTML += `${element}\n`;
 
+//}
+//let preview = dataJson.preview[5];
+//let artist = dataJson.artist.name
+// console.log('возврат preview', preview)
 
+// console.log('возврат',dataJson)
+// console.log(typeof(dataJson))
 
+// json.forEach((element) => {
+//   console.log(elem)
+// document.querySelector(
+//   ".track"
+// ).innerHTML += `${element}\n`;
+//});
 
-  
-  
-    
-    // document.querySelector(
-    //   ".track"
-    // ).innerHTML += `${element}\n`;
-
-  //}
-  //let preview = dataJson.preview[5];
-  //let artist = dataJson.artist.name
-  // console.log('возврат preview', preview)
-
-  // console.log('возврат',dataJson)
-  // console.log(typeof(dataJson))
-  
-  // json.forEach((element) => {
-  //   console.log(elem)
-    // document.querySelector(
-    //   ".track"
-    // ).innerHTML += `${element}\n`;
-  //});
-
-  //document.querySelector(".track").innerHTML = artist;
-  //document.querySelector(".track").innerHTML = `"<a href = '${preview}'></a>"`;
-
-  
+//document.querySelector(".track").innerHTML = artist;
+//document.querySelector(".track").innerHTML = `"<a href = '${preview}'></a>"`;
 
 //}
 //data.preview песня
 //data.artist.name название артиста или группы
 //data.artist.picture_xl картинка
-
- 
- 
- 
-
-
 
 // function htmlFill(data) {
 //   filler = data.hits[i].recipe;
