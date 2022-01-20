@@ -1,0 +1,53 @@
+/* CSS для кнопок управления плеером */
+.audio-track {
+    width: 330px;
+    height: 5px;
+    background-color: #dddddd;
+    margin: 20px 0px;
+}
+ 
+.time {
+    width: 0;
+    height: 3px;
+    background-color: #474747
+    
+}
+
+.buttonControls {
+    cursor: pointer;
+   width: 80px;
+   border: 0px;
+   height: 30px;
+   border-radius: 5px;
+}
+
+#player-container {
+min-width: none;
+max-width: 100%;
+background-color:lightskyblue;
+padding: 10px;
+border-radius: 5px;
+
+}
+
+.buttonControls {
+    cursor: pointer;
+    width: 108px;
+    border: 0px;
+    height: 30px;
+    border-radius: 5px;
+}
+
+#inputSearch {
+    width: 268px;
+    height: 26px;
+    border-radius: 5px;
+}
+
+#submit {
+    height: 30px;
+    border-radius: 5px;
+    cursor: pointer;
+    border: 0px;
+}
+

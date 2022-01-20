@@ -1,19 +1,84 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+      <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
     <script defer src="./js/const.js"></script>
+    <script defer src="./js/player.js"></script>
     <script defer src="./js/func.js"></script>
     <script defer src="./index.js"></script>
     <link rel="stylesheet" href="./css/index.css" />
-</head>
+    </head>
 <body>
-    <input
+  <!-- <audio id="audio" src="./audio/treck1.mp3" controls></audio> -->
+  <!-- Кнопки управления плеером -->
+  <!-- <div id="controls">
+    <div class="audio-track" >
+    <div class="time">
+      
+    </div>
+  </div>
+    <button class = "buttonControls" class="play">Play</button>
+    <button class = "buttonControls" class="pause">Pause</button>
+    <button class = "buttonControls" class="prev">&#60;</button>
+    <button class = "buttonControls" class="next">&#62;</button>
+</div>
+<br> -->
+
+
+
+
+
+<!-- <div class="track"> -->
+
+  <!-- <audio id="audio" >
+       <source 
+       src="./audio/begin.mp3" 
+       type="audio/mpeg" 
+       label = "begin"
+       preload = 'auto'
+       id="audiotrack" 
+       itemprop="audio">
+       
+  </audio> -->
+  
+  <!-- Набор песен</div> -->
+
+
+  <audio id="track">
+    <source src="1.mp3"  type="audio/mpeg" />
+    <source src="2.mp3"  type="audio/mpeg" />
+    <source src="3.mp3"  type="audio/mpeg" />
+  </audio>
+  
+
+
+  <div id="player-container" >
+    <div class="audio-track" >
+      <div class="time">
+        
+      </div>
+    </div>
+    <button id="play-pause"  class = "buttonControls" class="play">Play</button>
+    <button class = "buttonControls" id="prev">&#60;</button>
+    <button class = "buttonControls" id="next">&#62;</button>
+
+
+    
+  </div>
+
+
+
+
+
+<div> <br>
+        <input
           class=""
           type="text"
+          
           
           id = 'inputSearch'
           placeholder="Search..."
@@ -24,10 +89,9 @@
           class=""
           id="submit"
           type="submit"
-          value=" "
+          value=""
           title="Search"
-        >
-          <img src="" alt="Кнопка поиска" />
+                  alt="Search.."> Search..
         </button>
 </body>
 </html>
