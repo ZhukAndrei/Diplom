@@ -5,7 +5,10 @@ let urlSabmit
 let dataJson
 let preview
 let i = 0
-let arrTrackList = []
-let divClassTrack = document.querySelector(".track");
+let arrTreckList = []
+let divClassTreck = document.querySelector(".track");
 let treckList = document.querySelector('.treckList');
 let artistName;
+let ulTreckList = document.querySelector('#ulTreckList');
+let treckListHTML;
+let generateTreckList;
