@@ -44,10 +44,9 @@ function createUrl() {
 generateTreckList = (artistName, albumName, songName, songPreview) => {
    return `
   <li class = "pSrc" src = '${songPreview}'>
-  Artist: ${artistName} 
-  Album: ${albumName} 
-  Song: ${songName}
-  </li>`
+  <strong>Artist:</strong> ${artistName} <br>
+  <strong>Album:</strong> ${albumName} <br>
+  <strong>Song:</strong> ${songName}</li> <br>`
 }
 
 generateMp3List = (songPreview) => {
@@ -60,7 +59,9 @@ mp3ListHTML = arrTreckList.map((mp3) => {
   mp3.songPreview
   );
 })
-.join();
+.join('');
+
+
 
 treckListHTML = arrTreckList.map((informSong) => {
     return generateTreckList(
@@ -70,11 +71,11 @@ treckListHTML = arrTreckList.map((informSong) => {
       informSong.songPreview
     );
   })
-  .join();
+  .join('');
   
 if (ulTreckList.li != "") {
   arrTreckList.length = 0;
- 
+  document.querySelector('#treck').innerHTML = '';
 } 
 ulTreckList.innerHTML = treckListHTML;
 console.log("treckListHTML: ", treckListHTML);
