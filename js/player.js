@@ -3,12 +3,12 @@ let controlBtn = document.getElementById('play-pause');
 let btnPrev = document.querySelector("#prev");   // Берём кнопку переключения предыдущего трека
 let btnNext = document.querySelector("#next");   // Берём кнопку переключение следующего трека
 let treckNumber;
-let playlist = [
-    '1.mp3',
-    '2.mp3',
-    '3.mp3',
-    './audio/4.mp3',
-];
+// let playlist = [
+//     '1.mp3',
+//     '2.mp3',
+//     '3.mp3',
+//     './audio/4.mp3',
+// ];
 
 
 // console.log(playlist);

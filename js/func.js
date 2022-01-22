@@ -20,10 +20,12 @@ function createUrl() {
     .then((response) => response.json())
     .then((json) => {
 
+
       
       json.data.forEach((element) => {
         // создаем массив данных для вывода в трек-лист проигрывания 
-                arrTreckList.push({
+
+        arrTreckList.push({
           artistName: element.artist.name,
           albumName: element.album.title,
           songName: element.title,
@@ -39,22 +41,28 @@ function createUrl() {
 
 // создаем шаблон ячейки музыкальной композиции с дополнительной информацией
 
-//ulTreckList.removeChild(".pSrc");
-//ulTreckList.innerHTML = '';
-
 generateTreckList = (artistName, albumName, songName, songPreview) => {
    return `
   <li class = "pSrc" src = '${songPreview}'>
   Artist: ${artistName} 
   Album: ${albumName} 
   Song: ${songName}
-  </li>
-  `
+  </li>`
 }
 
-// // =========заполняем шаблон ячейки музыкальной композиции
-treckListHTML = arrTreckList
-  .map((informSong) => {
+// generateMp3List = (songPreview) => {
+//   return `<source src="${songPreview}" type="audio/mpeg"/>`
+// }
+
+// =========заполняем шаблон ячейки музыкальной композиции
+// mp3ListHTML = arrTreckList.map((mp3) => {
+//   return generateMp3List(
+//   mp3.songPreview
+//   );
+// })
+// .join();
+
+treckListHTML = arrTreckList.map((informSong) => {
     return generateTreckList(
       informSong.artistName,
       informSong.albumName,
@@ -63,6 +71,7 @@ treckListHTML = arrTreckList
     );
   })
   .join();
+  
 if (ulTreckList.li != "") {
   arrTreckList.length = 0;
   // const removeTreckList = () => {
@@ -75,6 +84,8 @@ if (ulTreckList.li != "") {
 } 
 ulTreckList.innerHTML = treckListHTML;
 console.log("treckListHTML: ", treckListHTML);
+// document.querySelector('#treck').innerHTML = mp3ListHTML;
+// console.log("mp3ListHTML: ", mp3ListHTML);
 
 
 }
