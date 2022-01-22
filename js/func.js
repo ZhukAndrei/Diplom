@@ -36,38 +36,58 @@ function createUrl() {
       // выводим сообщение об ошибке, если превышен лимит запросов в единицу времени к АПИ
       alert ("Ошибка запроса. Повторите запрос.")
     });
-}
-// проверяем создание массива
-console.log('arrTrecklist: ', arrTreckList);
+
 // создаем шаблон ячейки музыкальной композиции с дополнительной информацией
 
-generateTreckList = (artistName, albumName, songName, songSource) => {
-  return `
-  <li>
-  <p>Artist: ${artistName}</p>
-  <p>Album: ${albumName}</p>
-  <p class = 'pSrc' src = '${songSource}'>Song: ${songName}</p>
+//ulTreckList.removeChild(".pSrc");
+//ulTreckList.innerHTML = '';
+
+generateTreckList = (artistName, albumName, songName, songPreview) => {
+   return `
+  <li class = "pSrc" src = '${songPreview}'>
+  Artist: ${artistName} 
+  Album: ${albumName} 
+  Song: ${songName}
   </li>
   `
 }
 
-// заполняем шаблон ячейки музыкальной композиции
-// НЕ РАБОТАЕТ!!!! 
-// arrTreckList создается, а дальше ничего не могу понять. 
-// Вроде правильно написал//
-treckListHTML = arrTreckList.map(informSong => {
-
-  return generateTreckList(
-    informSong.artistName, 
-    informSong.albumName, 
-    informSong.songName, 
-    informSong.songSource);
-}).join()
-// проверяем шаблон ячейки музыкальной композиции
-console.log('treckListHTML: ', treckListHTML)
-
-// выводим в BODY трек-лист 
-// НЕ РАБОАЕТ!!!
+// // =========заполняем шаблон ячейки музыкальной композиции
+treckListHTML = arrTreckList
+  .map((informSong) => {
+    return generateTreckList(
+      informSong.artistName,
+      informSong.albumName,
+      informSong.songName,
+      informSong.songPreview
+    );
+  })
+  .join();
+if (ulTreckList.li != "") {
+  arrTreckList.length = 0;
+  // const removeTreckList = () => {
+  //   while (ulTreckList.firstChild) {
+  //     ulTreckList.removeChild(ulTreckList.firstChild);
+  //   }
+  //   removeTreckList();
+  // };
+  
+} 
 ulTreckList.innerHTML = treckListHTML;
+console.log("treckListHTML: ", treckListHTML);
+
+
+}
+// проверяем создание массива
+console.log('arrTrecklist: ', arrTreckList);
+
+
+
+
+
+
+
+
+
 
 

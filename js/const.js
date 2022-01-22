@@ -9,6 +9,6 @@ let arrTreckList = []
 let divClassTreck = document.querySelector(".track");
 let treckList = document.querySelector('.treckList');
 let artistName;
-let ulTreckList = document.querySelector('#ulTreckList');
+let ulTreckList = document.querySelector('.ulTreckList');
 let treckListHTML;
 let generateTreckList;

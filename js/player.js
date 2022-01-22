@@ -1,4 +1,4 @@
-let track = document.getElementById('track');
+let treck = document.getElementById('treck');
 let controlBtn = document.getElementById('play-pause');
 let btnPrev = document.querySelector("#prev");   // Берём кнопку переключения предыдущего трека
 let btnNext = document.querySelector("#next");   // Берём кнопку переключение следующего трека
@@ -14,17 +14,17 @@ let playlist = [
 // console.log(playlist);
 // Play/Pause функция
 function playPause() {
-    if (track.paused) {
-        track.play();
+    if (treck.paused) {
+        treck.play();
         controlBtn.innerText = "Pause";
     } else { 
-        track.pause();
+        treck.pause();
         controlBtn.innerText = "Play";
     }
 }
 
 controlBtn.addEventListener("click", playPause);
-track.addEventListener("ended", function() {
+treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";
 });
 
