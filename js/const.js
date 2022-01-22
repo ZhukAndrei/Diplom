@@ -11,5 +11,7 @@ let treckList = document.querySelector('.treckList');
 let artistName;
 let ulTreckList = document.querySelector('.ulTreckList');
 let treckListHTML;
+let mp3ListHTML;
 let generateTreckList;
+let generateMp3List;
 let mp3List = [];
