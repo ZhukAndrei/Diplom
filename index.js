@@ -1,3 +1,4 @@
+
 sum2Parameter()
 //Ввод URL по клику на кнопке
 submit.addEventListener("click", () => {

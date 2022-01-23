@@ -88,30 +88,28 @@ console.log("mp3ListHTML: ", mp3ListHTML);
 console.log('arrTrecklist: ', arrTreckList);
 
 //делегируем события списка песен
+
+//ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!!
 ulTreckList.onclick = e => {
   //e.stopPropagation();
-  //playPause();
   let srcDiv = e.target.closest('div');
-  //if (!div) return;
-  //if (!srcDiv.contains(div)) return;
 console.log(srcDiv);
 if (srcDiv!== '') {
+  playPause()
   let srcRef = srcDiv.getAttribute('value');
   console.log('srcRef', srcRef)
+  let choiceAudio = new Audio (srcRef)
+  choiceAudio.play()
 }
 }
 
-
-// var id;
-// document.onclick = function(event){
-// event = event || window.event;
-// if (!event.target) {
-// event.target = event.srcElement;
-// }
-// id = event.target.id;
-// var url = "deleteExample.action?id=" + id;
-// doStart(url);
-// }
+//function playAudio() {
+  //treck.pause();
+        //controlBtn.innerText = "Play";
+        
+        //treck.play()
+      
+//}
 
 
 // возможно поможет при авозапуске песни

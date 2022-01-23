@@ -29,7 +29,7 @@ treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";
 });
 
-document.querySelector('sourse').addEventListener("change").play();
+
 
 // btnNext.addEventListener("click", function() {
 //     console.log("btnNext"); 
