@@ -42,15 +42,15 @@ function createUrl() {
 // создаем шаблон ячейки музыкальной композиции с дополнительной информацией
 
 generateTreckList = (artistName, albumName, songName, songPreview) => {
-   return `
-  <li class = "pSrc" src = '${songPreview}'>
+   return `<div class = "pSrc" value = '${songPreview}'>
+  <li>
   Artist: <strong>${artistName}</strong> <br>
   Album: <strong>${albumName}</strong> <br>
-  Song: <strong>${songName}</strong></li> <br>`
+  Song: <strong>${songName}</strong></li> <br> </div>`
 }
 
 generateMp3List = (songPreview) => {
-  return `<source src="${songPreview}" type="audio/mpeg"/>`
+  return `<source src="${songPreview}" type="audio/mpeg" />`
 }
 
 // =========заполняем шаблон ячейки музыкальной композиции
@@ -89,13 +89,26 @@ console.log('arrTrecklist: ', arrTreckList);
 
 //делегируем события списка песен
 ulTreckList.onclick = e => {
-  e.stopPropagation();
-  playPause();
-  let etarget = e.target
-console.log(etarget.querySelector("source").src);
-
-
+  //e.stopPropagation();
+  //playPause();
+  let srcDiv = e.target.closest('div');
+  //if (!div) return;
+  //if (!srcDiv.contains(div)) return;
+console.log(srcDiv);
 }
+
+
+// var id;
+// document.onclick = function(event){
+// event = event || window.event;
+// if (!event.target) {
+// event.target = event.srcElement;
+// }
+// id = event.target.id;
+// var url = "deleteExample.action?id=" + id;
+// doStart(url);
+// }
+
 
 // возможно поможет при авозапуске песни
 

@@ -60,3 +60,7 @@ body {
    margin-left: -20px;
 }
 
+li + li {
+    border-top: 1px solid #ccc;
+  }
+
