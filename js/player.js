@@ -14,19 +14,22 @@ let treckNumber;
 // console.log(playlist);
 // Play/Pause функция
 function playPause() {
-    if (treck.paused) {
+   if (treck.paused) {
         treck.play();
         controlBtn.innerText = "Pause";
     } else { 
         treck.pause();
         controlBtn.innerText = "Play";
     }
+
 }
 
 controlBtn.addEventListener("click", playPause);
 treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";
 });
+
+document.querySelector('sourse').addEventListener("change").play();
 
 // btnNext.addEventListener("click", function() {
 //     console.log("btnNext"); 

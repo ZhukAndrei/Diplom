@@ -44,9 +44,9 @@ function createUrl() {
 generateTreckList = (artistName, albumName, songName, songPreview) => {
    return `
   <li class = "pSrc" src = '${songPreview}'>
-  <strong>Artist:</strong> ${artistName} <br>
-  <strong>Album:</strong> ${albumName} <br>
-  <strong>Song:</strong> ${songName}</li> <br>`
+  Artist: <strong>${artistName}</strong> <br>
+  Album: <strong>${albumName}</strong> <br>
+  Song: <strong>${songName}</strong></li> <br>`
 }
 
 generateMp3List = (songPreview) => {
@@ -87,9 +87,24 @@ console.log("mp3ListHTML: ", mp3ListHTML);
 // проверяем создание массива
 console.log('arrTrecklist: ', arrTreckList);
 
+//делегируем события списка песен
+ulTreckList.onclick = e => {
+  e.stopPropagation();
+  playPause();
+  let etarget = e.target
+console.log(etarget.querySelector("source").src);
 
 
+}
 
+// возможно поможет при авозапуске песни
+
+// audio_file.onchange = function(){
+//   var files = this.files;
+//   var file = URL.createObjectURL(files[0]); 
+//   audio_player.src = file; 
+//   audio_player.play();
+// };
 
 
 
