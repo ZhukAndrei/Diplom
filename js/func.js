@@ -95,6 +95,10 @@ ulTreckList.onclick = e => {
   //if (!div) return;
   //if (!srcDiv.contains(div)) return;
 console.log(srcDiv);
+if (srcDiv!== '') {
+  let srcRef = srcDiv.getAttribute('value');
+  console.log('srcRef', srcRef)
+}
 }
 
 
