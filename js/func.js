@@ -89,37 +89,27 @@ console.log('arrTrecklist: ', arrTreckList);
 
 //делегируем события списка песен
 
-//ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!!
-ulTreckList.onclick = e => {
+//ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
+ulTreckList.onclick = (e) => {
+  treck.pause();
   //e.stopPropagation();
-  let srcDiv = e.target.closest('div');
-console.log(srcDiv);
-if (srcDiv!== '') {
-  playPause()
-  let srcRef = srcDiv.getAttribute('value');
-  console.log('srcRef', srcRef)
-  let choiceAudio = new Audio (srcRef)
-  choiceAudio.play()
-}
-}
-
-//function playAudio() {
-  //treck.pause();
-        //controlBtn.innerText = "Play";
-        
-        //treck.play()
-      
-//}
+  let srcDiv = e.target.closest("div");
+  console.log(srcDiv);
+  if (srcDiv !== "") {
+    let srcRef = srcDiv.getAttribute("value");
+    console.log("srcRef", srcRef);
+    treck.pause();
+    treck.currentTime = 0;
+    controlBtn.innerText = "Play";
+    let choiceAudio = new Audio(srcRef);
+    choiceAudio.play();
 
 
-// возможно поможет при авозапуске песни
+  }
 
-// audio_file.onchange = function(){
-//   var files = this.files;
-//   var file = URL.createObjectURL(files[0]); 
-//   audio_player.src = file; 
-//   audio_player.play();
-// };
+};
+//==========================================================================
+
 
 
 

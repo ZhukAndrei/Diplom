@@ -14,12 +14,21 @@ let treckNumber;
 // console.log(playlist);
 // Play/Pause функция
 function playPause() {
+  audioPlay = setInterval(function() {
+    // Получаем значение на какой секунде песня
+    let audioTime = Math.round(audio.currentTime);
+    // Получаем всё время песни
+    let audioLength = Math.round(audio.duration)
+    // Назначаем ширину элементу time
+    time.style.width = (audioTime * 100) / audioLength + '%';
+}, 10)
    if (treck.paused) {
         treck.play();
         controlBtn.innerText = "Pause";
     } else { 
         treck.pause();
         controlBtn.innerText = "Play";
+        //clearInterval(audioPlay)
     }
 
 }

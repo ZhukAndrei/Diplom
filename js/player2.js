@@ -19,14 +19,32 @@ let treck; // Переменная с индексом трека
  window.onload = function() {
     treck = 0; // Присваиваем переменной ноль
  }
-function switchTreck (numTreck) {//
-    // Меняем значение атрибута src
-    audio.src = './audio/' + playlist[numTreck];
-    // Назначаем время песни ноль
-    audio.currentTime = 0;
-    // Включаем песню
-    audio.play();
-}
+ function switchTreckNext() {
+    if(g === audio.length) {
+      g = 0;
+    }
+    audio.src = `${audio[g]}`;
+    g++;
+  };
+
+  function switchTreckPrev() {
+    if(g === 0) {
+      g = audio.length;
+    }
+    audio.src = `${audio[g]}`;
+    g--;
+  };
+
+
+
+ // function switchTreck () {//numTreck
+//     // Меняем значение атрибута src
+//     //audio.src = './audio/' + playlist[numTreck];
+//     // Назначаем время песни ноль
+//     audio.currentTime = 0;
+//     // Включаем песню
+//     audio.play();
+//}
 btnPlay.addEventListener("click", function() {
     audio.play(); // Запуск песни
     // Запуск интервала 
@@ -39,38 +57,47 @@ btnPlay.addEventListener("click", function() {
         time.style.width = (audioTime * 100) / audioLength + '%';
         // Сравниваем, на какой секунде сейчас трек и всего сколько времени длится
         // И проверяем что переменная treck меньше четырёх
-        if (audioTime == audioLength && treck < 3) {
-            treck++; // То Увеличиваем переменную 
-            switchTreck(treck); // Меняем трек
-        // Иначе проверяем тоже самое, но переменная treck больше или равна четырём
-        } else if (audioTime == audioLength && treck >= 3) {
-            treck = 0; // То присваиваем treck ноль
-            switchTreck(treck); //Меняем трек
-        }
+        // if (audioTime == audioLength && treck < 3) {
+        //     treck++; // То Увеличиваем переменную 
+        //     //switchTreck(treck); // Меняем трек
+        //     switchTreckNext()
+        // // Иначе проверяем тоже самое, но переменная treck больше или равна четырём
+        // } else if (audioTime == audioLength && treck >= 3) {
+        //     treck = 0; // То присваиваем treck ноль
+        //     //switchTreck(treck); //Меняем трек
+        //     switchTreckPrev();
+        //}
     }, 10)
 });
+btnNext.addEventListener('click', function() {
+    switchTreckNext();
+    audio.pause()
+    audio.currentTime = 0;
+  });
+
+
 btnPause.addEventListener("click", function() {
     audio.pause(); // Останавливает песню
     clearInterval(audioPlay) // Останавливает интервал
 });
-btnPrev.addEventListener("click", function() {
-    // Проверяем что переменная treck больше нуля
-    if (treck > 0) {
-        treck--; // Если верно, то уменьшаем переменную на один
-        switchTreck(treck); // Меняем песню.
-    } else { // Иначе
-        treck = 3; // Присваиваем три
-        switchTreck(treck); // Меняем песню
-    }
-});
-btnNext.addEventListener("click", function() {
-    // Проверяем что переменная treck больше трёх
-    if (treck < 3) { // Если да, то
-        treck++; // Увеличиваем её на один
-        switchTreck(treck); // Меняем песню 
-    } else { // Иначе
-        treck = 0; // Присваиваем ей ноль
-        switchTreck(treck); // Меняем песню
-    }
-});
+// btnPrev.addEventListener("click", function() {
+//     // Проверяем что переменная treck больше нуля
+//     if (treck > 0) {
+//         treck--; // Если верно, то уменьшаем переменную на один
+//         switchTreck(treck); // Меняем песню.
+//     } else { // Иначе
+//         treck = 3; // Присваиваем три
+//         switchTreck(treck); // Меняем песню
+//     }
+// });
+// btnNext.addEventListener("click", function() {
+//     // Проверяем что переменная treck больше трёх
+//     if (treck < 3) { // Если да, то
+//         treck++; // Увеличиваем её на один
+//         switchTreck(treck); // Меняем песню 
+//     } else { // Иначе
+//         treck = 0; // Присваиваем ей ноль
+//         switchTreck(treck); // Меняем песню
+//     }
+// });
 
