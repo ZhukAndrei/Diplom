@@ -3,6 +3,7 @@ let controlBtn = document.getElementById('play-pause');
 let btnPrev = document.querySelector("#prev");   // Берём кнопку переключения предыдущего трека
 let btnNext = document.querySelector("#next");   // Берём кнопку переключение следующего трека
 let btnStop = document.querySelector("#stop");   // Берём кнопку переключение следующего трека
+let time = document.querySelector('.time');
 
 
 let treckNumber;
@@ -15,13 +16,13 @@ let treckNumber;
 
 
 // console.log(playlist);
-// Play/Pause функция
+// Play/Pause функция =============================
 function playPause() {
   audioPlay = setInterval(function() {
     // Получаем значение на какой секунде песня
-    let audioTime = Math.round(audio.currentTime);
+    let audioTime = Math.round(treck.currentTime);
     // Получаем всё время песни
-    let audioLength = Math.round(audio.duration)
+    let audioLength = Math.round(treck.duration)
     // Назначаем ширину элементу time
     time.style.width = (audioTime * 100) / audioLength + '%';
 }, 10)
@@ -35,7 +36,7 @@ function playPause() {
     }
 
 }
-
+//============================================
 controlBtn.addEventListener("click", playPause);
 treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";

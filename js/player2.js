@@ -1,137 +1,103 @@
-var imageTracker = 'playImage';
-//set events handlers for on click
-document.getElementById("swapImage").onclick = function() {
-	swapImage();
-	playPause();
-};
-document.getElementById("stopImage").onclick = function() {
-	stop();
-  
-  
-}
-document.getElementById("nextImage").onclick = function() {
-	forward();
-}
-document.getElementById("backImage").onclick = function() {
-	backward();
-}
 
-//hadlers
-
- var swapImage = function() {
-  var image = document.getElementById('swapImage');
-  if (imageTracker == 'playImage') {
-    image.src = 'http://findicons.com/files/icons/129/soft_scraps/256/button_pause_01.png';
-    imageTracker = 'stopImage';
-  } else {
-    image.src = 'http://findicons.com/files/icons/129/soft_scraps/256/button_play_01.png';
-    imageTracker = 'playImage';
-  }
-};
-
-//playing flag 
-var musicTracker = 'noMusic';
-//playlist audios
-var audios = [];
-let song = document.querySelector('.song')
-
- song.array.forEach(element => {
-   
- (function(){
- 		var load = new  Audio(element.this.getAttribute("url"));
-    load.load();
-    load.addEventListener('ended',function(){
-       forward();
-    });
-    audios.push(load);
- });
-});  
-//active track
-var activeTrack = 0;
-
-//=====================================    
-var playPause = function() {
-  if (musicTracker == 'noMusic') {
-  	audios[activeTrack].play();
-    musicTracker = 'playMusic';
-  } else {
-    audios[activeTrack].pause();
-    musicTracker = 'noMusic';
-  }
-  showPlaying();
-};
-
-//====================================
-function playPause() {
-  audioPlay = setInterval(function() {
-    // Получаем значение на какой секунде песня
-    let audioTime = Math.round(audio.currentTime);
-    // Получаем всё время песни
-    let audioLength = Math.round(audio.duration)
-    // Назначаем ширину элементу time
-    time.style.width = (audioTime * 100) / audioLength + '%';
-}, 10)
-   if (treck.paused) {
-        treck.play();
-        controlBtn.innerText = "Pause";
-    } else { 
-        treck.pause();
-        controlBtn.innerText = "Play";
-        //clearInterval(audioPlay)
+let audio = document.getElementById("audio");    // Берём элемент audio
+let time = document.querySelector(".time");      // Берём аудио дорожку
+let btnPlay = document.querySelector(".play");   // Берём кнопку проигрывания
+let btnPause = document.querySelector(".pause"); // Берём кнопку паузы
+let btnPrev = document.querySelector(".prev");   // Берём кнопку переключения предыдущего трека
+let btnNext = document.querySelector(".next");   // Берём кнопку переключение следующего трека
+// Массив с названиями песен
+let playlist = [
+    'https://cdns-preview-d.dzcdn.net/stream/c-dc72b1c3b569b903db2c75969db478d1-7.mp3',
+    'https://cdns-preview-6.dzcdn.net/stream/c-674de2b27cee8d205a0be318c8a6d1c1-3.mp3',
+    'https://cdns-preview-9.dzcdn.net/stream/c-9b1db108fdac3a188fc2e5021713b272-3.mp3',
+    'https://cdns-preview-9.dzcdn.net/stream/c-9acbddfaa6e02061efa9e80cfa50f951-9.mp3',
+];
+ 
+let treck; // Переменная с индексом трека
+ 
+// Событие перед загрузкой страницы
+ window.onload = function() {
+    treck = 0; // Присваиваем переменной ноль
+ }
+ function switchTreckNext() {
+    if(g === audio.length) {
+      g = 0;
     }
+    audio.src = `${audio[g]}`;
+    g++;
+  };
 
-}
-//=================================
+  function switchTreckPrev() {
+    if(g === 0) {
+      g = audio.length;
+    }
+    audio.src = `${audio[g]}`;
+    g--;
+  };
 
-var stop = function() {
-  if (musicTracker == 'playMusic') {
-  	 audios[activeTrack].pause();
-		 audios[activeTrack].currentTime = 0;
-  	 audios[activeTrack].play();
-  } else {
-    audios[activeTrack].currentTime = 0;
-  }
-};
 
-var forward = function(){
-  function increment(){
-  	 if (activeTrack < audios.length - 1)
-     		activeTrack++;
-     else activeTrack = 0;
-  }
-	if (musicTracker == 'playMusic') {
-  	 audios[activeTrack].pause();
-		 //audios[activeTrack].currentTime = 0;
-     increment();
-  	 audios[activeTrack].play();
-  } else {
-    increment();
-  }
-  showPlaying();
-};
 
-var backward = function(){
-  function decrement(){
-  	 if (activeTrack > 0)
-     		activeTrack--;
-     else activeTrack = audios.length -1;
-  }
-	if (musicTracker == 'playMusic') {
-  	 audios[activeTrack].pause();
-		 //audios[activeTrack].currentTime = 0;
-     decrement();
-  	 audios[activeTrack].play();
-  } else {
-    decrement();
-  }
-  showPlaying();
-};
+ // function switchTreck () {//numTreck
+//     // Меняем значение атрибута src
+//     //audio.src = './audio/' + playlist[numTreck];
+//     // Назначаем время песни ноль
+//     audio.currentTime = 0;
+//     // Включаем песню
+//     audio.play();
+//}
+btnPlay.addEventListener("click", function() {
+    audio.play(); // Запуск песни
+    // Запуск интервала 
+    audioPlay = setInterval(function() {
+        // Получаем значение на какой секунде песня
+        let audioTime = Math.round(audio.currentTime);
+        // Получаем всё время песни
+        let audioLength = Math.round(audio.duration)
+        // Назначаем ширину элементу time
+        time.style.width = (audioTime * 100) / audioLength + '%';
+        // Сравниваем, на какой секунде сейчас трек и всего сколько времени длится
+        // И проверяем что переменная treck меньше четырёх
+        // if (audioTime == audioLength && treck < 3) {
+        //     treck++; // То Увеличиваем переменную 
+        //     //switchTreck(treck); // Меняем трек
+        //     switchTreckNext()
+        // // Иначе проверяем тоже самое, но переменная treck больше или равна четырём
+        // } else if (audioTime == audioLength && treck >= 3) {
+        //     treck = 0; // То присваиваем treck ноль
+        //     //switchTreck(treck); //Меняем трек
+        //     switchTreckPrev();
+        //}
+    }, 10)
+});
+btnNext.addEventListener('click', function() {
+    switchTreckNext();
+    audio.pause()
+    audio.currentTime = 0;
+  });
 
-var showPlaying = function()
-{
-	var src = audios[activeTrack].src;
-   song.removeClass("playing");
-   ("div[url='" + src + "']").addClass("playing");
-   console.log( ("div[url='" + src + "']"));
-};
+
+btnPause.addEventListener("click", function() {
+    audio.pause(); // Останавливает песню
+    clearInterval(audioPlay) // Останавливает интервал
+});
+// btnPrev.addEventListener("click", function() {
+//     // Проверяем что переменная treck больше нуля
+//     if (treck > 0) {
+//         treck--; // Если верно, то уменьшаем переменную на один
+//         switchTreck(treck); // Меняем песню.
+//     } else { // Иначе
+//         treck = 3; // Присваиваем три
+//         switchTreck(treck); // Меняем песню
+//     }
+// });
+// btnNext.addEventListener("click", function() {
+//     // Проверяем что переменная treck больше трёх
+//     if (treck < 3) { // Если да, то
+//         treck++; // Увеличиваем её на один
+//         switchTreck(treck); // Меняем песню 
+//     } else { // Иначе
+//         treck = 0; // Присваиваем ей ноль
+//         switchTreck(treck); // Меняем песню
+//     }
+// });
 

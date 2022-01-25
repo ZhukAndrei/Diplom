@@ -117,15 +117,15 @@ ulTreckList.onclick = (e) => {
 
 };
   document.querySelector("#volume").onclick = audioVolume;
-  
-// volume.addEventListener("change", function(e) {
-//  choiceAudio.volume = e.currentTarget.value / 100; 
-// })
 //==========================================================================
 function audioVolume () {
   let v = this.value
 treck.volume = v / 100;
 choiceAudio.volume = v / 100;
-//choiceAudio.volume = v / 100;
-//choiceAudio.volume = e.currentTarget.value / 100;
 }
+
+
+// function progressUpdate() {
+// 	// Устанавливаем позицию воспроизведения
+//     time.style.width = (video.currentTime / video.duration * 100)  + "%";
+//   }
