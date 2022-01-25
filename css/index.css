@@ -25,10 +25,11 @@ border-radius: 5px;
 
 .buttonControls {
     cursor: pointer;
-    width: 80px;
+    width: 165px;
     border: 0px;
     height: 30px;
     border-radius: 5px;
+    margin-top: 1em;
 }
 
 #inputSearch {
@@ -52,6 +53,14 @@ body {
 .ulTreckList   {
    color: rgb(19, 140, 216); 
    margin-left: -20px;
+}
+
+#volume {
+    width: 20em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    background-color: #474747
+
 }
 
 

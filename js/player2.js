@@ -17,6 +17,7 @@ document.getElementById("backImage").onclick = function() {
 }
 
 //hadlers
+
  var swapImage = function() {
   var image = document.getElementById('swapImage');
   if (imageTracker == 'playImage') {
@@ -32,6 +33,8 @@ document.getElementById("backImage").onclick = function() {
 var musicTracker = 'noMusic';
 //playlist audios
 var audios = [];
+let song = document.querySelector('.song')
+
  song.array.forEach(element => {
    
  (function(){
@@ -129,6 +132,6 @@ var showPlaying = function()
 	var src = audios[activeTrack].src;
    song.removeClass("playing");
    ("div[url='" + src + "']").addClass("playing");
-   console.log( $("div[url='" + src + "']"));
+   console.log( ("div[url='" + src + "']"));
 };
 

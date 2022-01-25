@@ -90,24 +90,42 @@ console.log('arrTrecklist: ', arrTreckList);
 //делегируем события списка песен
 
 //ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
+var choiceAudio;
 ulTreckList.onclick = (e) => {
   treck.pause();
   treck.currentTime = 0;
   //e.stopPropagation();
   let srcDiv = e.target.closest("div");
   console.log(srcDiv);
+  
   if (srcDiv !== "") {
+    mutted = true;
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
     //treck.pause();
     
     controlBtn.innerText = "Play";
-    let choiceAudio = new Audio(srcRef);
+    choiceAudio = new Audio(srcRef);
+    this.mutted = true;
+    //choiceAudio.duration()
     choiceAudio.play();
+  
+
 
 
   }
 
 };
+  document.querySelector("#volume").onclick = audioVolume;
+  
+// volume.addEventListener("change", function(e) {
+//  choiceAudio.volume = e.currentTarget.value / 100; 
+// })
 //==========================================================================
-
+function audioVolume () {
+  let v = this.value
+treck.volume = v / 100;
+choiceAudio.volume = v / 100;
+//choiceAudio.volume = v / 100;
+//choiceAudio.volume = e.currentTarget.value / 100;
+}
