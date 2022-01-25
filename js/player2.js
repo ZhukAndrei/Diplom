@@ -69,11 +69,14 @@ btnPlay.addEventListener("click", function() {
         //}
     }, 10)
 });
-btnNext.addEventListener('click', function() {
-    switchTreckNext();
-    audio.pause()
-    audio.currentTime = 0;
-  });
+
+
+
+// btnNext.addEventListener('click', function() {
+//     switchTreckNext();
+//     audio.pause()
+//     audio.currentTime = 0;
+//   });
 
 
 btnPause.addEventListener("click", function() {

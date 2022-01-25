@@ -92,21 +92,21 @@ console.log('arrTrecklist: ', arrTreckList);
 //ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
 var choiceAudio;
 ulTreckList.onclick = (e) => {
-  treck.pause();
-  treck.currentTime = 0;
+  // treck.pause();
+  // treck.currentTime = 0;
   //e.stopPropagation();
   let srcDiv = e.target.closest("div");
   console.log(srcDiv);
   
   if (srcDiv !== "") {
-    mutted = true;
+    //mutted = true;
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
     //treck.pause();
     
     controlBtn.innerText = "Play";
     choiceAudio = new Audio(srcRef);
-    this.mutted = true;
+    //this.mutted = true;
     //choiceAudio.duration()
     choiceAudio.play();
   
@@ -125,7 +125,3 @@ choiceAudio.volume = v / 100;
 }
 
 
-// function progressUpdate() {
-// 	// Устанавливаем позицию воспроизведения
-//     time.style.width = (video.currentTime / video.duration * 100)  + "%";
-//   }
