@@ -92,14 +92,15 @@ console.log('arrTrecklist: ', arrTreckList);
 //ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
 ulTreckList.onclick = (e) => {
   treck.pause();
+  treck.currentTime = 0;
   //e.stopPropagation();
   let srcDiv = e.target.closest("div");
   console.log(srcDiv);
   if (srcDiv !== "") {
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
-    treck.pause();
-    treck.currentTime = 0;
+    //treck.pause();
+    
     controlBtn.innerText = "Play";
     let choiceAudio = new Audio(srcRef);
     choiceAudio.play();
@@ -109,11 +110,4 @@ ulTreckList.onclick = (e) => {
 
 };
 //==========================================================================
-
-
-
-
-
-
-
 

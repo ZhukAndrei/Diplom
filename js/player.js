@@ -2,6 +2,9 @@ let treck = document.getElementById('treck');
 let controlBtn = document.getElementById('play-pause');
 let btnPrev = document.querySelector("#prev");   // Берём кнопку переключения предыдущего трека
 let btnNext = document.querySelector("#next");   // Берём кнопку переключение следующего трека
+let btnStop = document.querySelector("#stop");   // Берём кнопку переключение следующего трека
+
+
 let treckNumber;
 // let playlist = [
 //     '1.mp3',
@@ -38,7 +41,15 @@ treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";
 });
 
-
+btnStop.addEventListener("click", function () {
+    treck.pause()
+    treck.currentTime = 0;
+    controlBtn.innerText = "Play";
+  
+});
+treck.addEventListener("ended", function() {
+  controlBtn.innerText = "Play";
+});
 
 // btnNext.addEventListener("click", function() {
 //     console.log("btnNext"); 
