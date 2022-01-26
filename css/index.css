@@ -10,18 +10,13 @@
     width: 0;
     height: 5px;
     background-color:dodgerblue ;
-    
-    
 }
 
 #player-container {
     width: 21em;
-/* min-width: none;
-max-width: 100%; */
 background-color:lightskyblue;
 padding: 10px;
 border-radius: 5px;
-
 }
 
 .buttonControls {
@@ -34,10 +29,10 @@ border-radius: 5px;
 }
 
 #inputSearch {
-    width: 268px;
+    width: 258px;
     height: 26px;
     border-radius: 5px;
-    margin-left: 5px;
+    margin-left: 0px;
 }
 
 #submit {
@@ -62,7 +57,6 @@ body {
     margin-bottom: 1em;
     background-color: #474747;
     border: 0px;
-
 }
 
 

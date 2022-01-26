@@ -2,8 +2,6 @@ function sum2Parameter(a, b) {
   return a + b;
 }
 
-
-
 // отправка запроса и получение ответа
 function createUrl() {
   //arrTreckList.length = 0;
@@ -19,12 +17,8 @@ function createUrl() {
   })
     .then((response) => response.json())
     .then((json) => {
-
-
-      
       json.data.forEach((element) => {
         // создаем массив данных для вывода в трек-лист проигрывания 
-
         arrTreckList.push({
           artistName: element.artist.name,
           albumName: element.album.title,
@@ -34,13 +28,12 @@ function createUrl() {
       });
     })
     .catch(err => {
-      console.error(err);
+      //console.error(err);
       // выводим сообщение об ошибке, если превышен лимит запросов в единицу времени к АПИ
-      alert ("Ошибка запроса. Повторите запрос.")
+      alert ("Ошибка запроса. Превышено количество запросов в ДЕМО-АПИ. Повторите запрос.")
     });
 
 // создаем шаблон ячейки музыкальной композиции с дополнительной информацией
-
 generateTreckList = (artistName, albumName, songName, songPreview) => {
    return `<div class = "pSrc" value = '${songPreview}'>
   <li>
@@ -61,17 +54,15 @@ mp3ListHTML = arrTreckList.map((mp3) => {
 })
 .join('');
 
-
-
 treckListHTML = arrTreckList.map((informSong) => {
-    return generateTreckList(
-      informSong.artistName,
-      informSong.albumName,
-      informSong.songName,
-      informSong.songPreview
-    );
-  })
-  .join('');
+  return generateTreckList(
+    informSong.artistName,
+    informSong.albumName,
+    informSong.songName,
+    informSong.songPreview
+  );
+})
+.join('');
   
 if (ulTreckList.li != "") {
   arrTreckList.length = 0;
@@ -81,43 +72,48 @@ ulTreckList.innerHTML = treckListHTML;
 console.log("treckListHTML: ", treckListHTML);
 document.querySelector('#treck').innerHTML = mp3ListHTML;
 console.log("mp3ListHTML: ", mp3ListHTML);
-
-
 }
 // проверяем создание массива
 console.log('arrTrecklist: ', arrTreckList);
 
 //делегируем события списка песен
-
 //ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
 var choiceAudio;
 ulTreckList.onclick = (e) => {
-  // treck.pause();
-  // treck.currentTime = 0;
-  //e.stopPropagation();
+  e.stopPropagation();
   let srcDiv = e.target.closest("div");
-  console.log(srcDiv);
-  
+  //console.log(srcDiv);
   if (srcDiv !== "") {
-    //mutted = true;
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
-    //treck.pause();
-    
     controlBtn.innerText = "Play";
     choiceAudio = new Audio(srcRef);
-    //this.mutted = true;
-    //choiceAudio.duration()
     choiceAudio.play();
-  
-
-
-
+    playPause()
   }
+
+  function playPause() {
+      audioPlay = setInterval(function () {
+        // Получаем значение на какой секунде песня
+        let audioTime = Math.round(treck.currentTime);
+        // Получаем всё время песни
+        let audioLength = Math.round(treck.duration);
+        // Назначаем ширину элементу time
+        time.style.width = (audioTime * 100) / audioLength + "%";
+      }, 10);
+      if (treck.paused) {
+        treck.play();
+        controlBtn.innerText = "Pause";
+      } else {
+        treck.pause();
+        controlBtn.innerText = "Play";
+      }
+    }
+    
+
 
 };
   document.querySelector("#volume").onclick = audioVolume;
-//==========================================================================
 function audioVolume () {
   let v = this.value
 treck.volume = v / 100;

@@ -5,7 +5,6 @@ let btnNext = document.querySelector("#next");   // Берём кнопку пе
 let btnStop = document.querySelector("#stop");   // Берём кнопку переключение следующего трека
 let time = document.querySelector('.time');
 
-
 let treckNumber;
 // let playlist = [
 //     '1.mp3',
@@ -31,7 +30,7 @@ function playPause() {
     } else { 
         treck.pause();
         controlBtn.innerText = "Play";
-        //clearInterval(audioPlay)
+        audioPlay = ''
     }
 
 }
@@ -50,38 +49,3 @@ btnStop.addEventListener("click", function () {
 treck.addEventListener("ended", function() {
   controlBtn.innerText = "Play";
 });
-
-// btnNext.addEventListener("click", function() {
-//     console.log("btnNext"); 
-//     treckNumber = 0;
-//         // Проверяем что переменная treck меньше трёх
-//     if (treckNumber < playlist.length - 1) { // Если да, то
-//         treckNumber = treckNumber++; // Увеличиваем её на один
-//         //switchTreck(treckNumber); // Меняем песню 
-        
-//     } else { // Иначе
-//         treckNumber = 0; // Присваиваем ей ноль
-//         //switchTreck(treckNumber); // Меняем песню
-        
-//     }
-//     console.log(treckNumber) 
-// });
-
-// btnPrev.addEventListener("click", function(treckNumber = 0) {
-//     console.log("btnPrev");
-//     treckNumber = 0;
-//     // Проверяем что переменная treck больше нуля
-//     if (treckNumber > 0) {
-//         treckNumber = treckNumber--;// Если верно, то уменьшаем переменную на один
-//         //switchTreck(treckNumber); // Меняем песню.
-        
-//     } else { // Иначе
-//         treckNumber = playlist.length - 1; // Присваиваем 
-//         //switchTreck(treckNumber); // Меняем песню
-        
-//     }
-//     console.log(treckNumber)
-// });
-
-
-
