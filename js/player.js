@@ -23,25 +23,25 @@ function playPause() {
     // Назначаем ширину элементу time
     time.style.width = (audioTime * 100) / audioLength + "%";
   }, 10);
-  if (treck.paused) {
-    treck.play();
+  if (choiceAudio.paused) {
+    choiceAudio.play();
     controlBtn.innerText = "Pause";
   } else {
-    treck.pause();
+    choiceAudio.pause();
     controlBtn.innerText = "Play";
   }
 }
 //============================================
-controlBtn.addEventListener("click", playPause);
-treck.addEventListener("ended", function () {
-  controlBtn.innerText = "Play";
-});
+// controlBtn.addEventListener("click", playPause);
+// treck.addEventListener("ended", function () {
+//   controlBtn.innerText = "Play";
+// });
 
-btnStop.addEventListener("click", function () {
-  treck.pause();
-  treck.currentTime = 0;
-  controlBtn.innerText = "Play";
-});
-treck.addEventListener("ended", function () {
-  controlBtn.innerText = "Play";
-});
+// btnStop.addEventListener("click", function () {
+//   treck.pause();
+//   treck.currentTime = 0;
+//   controlBtn.innerText = "Play";
+// });
+// treck.addEventListener("ended", function () {
+//   controlBtn.innerText = "Play";
+// });

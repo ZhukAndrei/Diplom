@@ -88,61 +88,44 @@ ulTreckList.onclick = (e) => {
   let srcDiv = e.target.closest("div");
   //console.log(srcDiv);
   if (srcDiv !== "") {
+    
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
     controlBtn.innerText = "Play";
     choiceAudio.src = srcRef;
-    if (treck.paused) {
-      treck.play();
-      controlBtn.innerText = "Pause";
-    } else {
-      treck.pause();
-      controlBtn.innerText = "Play";
-    }
+    // if (choiceAudio.paused) {
+    //   choiceAudio.play();
+    //   controlBtn.innerText = "Pause";
+    // } else {
+    //   choiceAudio.pause();
+    //   controlBtn.innerText = "Play";
+    // }
 
     treckPlayList = choiceAudio.play();
-    playPause();
+    controlBtn.innerText = "Pause";
+    //playPause();
   }
 
 }
 
 let treckPlayList;
 
-
-//   function playPause() {
-//     audioPlay = setInterval(function () {
-//       // Получаем значение на какой секунде песня
-//       let audioTime = Math.round(treck.currentTime);
-//       // Получаем всё время песни
-//       let audioLength = Math.round(treck.duration);
-//       // Назначаем ширину элементу time
-//       time.style.width = (audioTime * 100) / audioLength + "%";
-//     }, 10);
-//     if (treck.paused) {
-//       treck.play();
-//       controlBtn.innerText = "Pause";
-//     } else {
-//       treck.pause();
-//       controlBtn.innerText = "Play";
-//     }
-//   }
-// };
 document.querySelector("#volume").onclick = audioVolume;
 function audioVolume() {
   let v = this.value;
   choiceAudio.volume = v / 100;
 }
 
-// controlBtn.addEventListener("click", playPause);
-// treck.addEventListener("ended", function () {
-//   controlBtn.innerText = "Play";
-// });
+controlBtn.addEventListener("click", playPause);
+choiceAudio.addEventListener("ended", function () {
+  controlBtn.innerText = "Play";
+});
 
-// btnStop.addEventListener("click", function () {
-//   treck.pause();
-//   treck.currentTime = 0;
-//   controlBtn.innerText = "Play";
-// });
-// treck.addEventListener("ended", function () {
-//   controlBtn.innerText = "Play";
-// });
+btnStop.addEventListener("click", function () {
+  choiceAudio.pause();
+  choiceAudio.currentTime = 0;
+  controlBtn.innerText = "Play";
+});
+choiceAudio.addEventListener("ended", function () {
+  controlBtn.innerText = "Play";
+});
