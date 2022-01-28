@@ -44,17 +44,6 @@ function createUrl() {
   Song: <strong>${songName}</strong></li> <br> </div>`;
   };
 
-  generateMp3List = (songPreview) => {
-    return `<source src="${songPreview}" type="audio/mpeg" />`;
-  };
-
-  // =========заполняем шаблон ячейки музыкальной композиции
-  mp3ListHTML = arrTreckList
-    .map((mp3) => {
-      return generateMp3List(mp3.songPreview);
-    })
-    .join("");
-
   treckListHTML = arrTreckList
     .map((informSong) => {
       return generateTreckList(
@@ -81,35 +70,23 @@ console.log("arrTrecklist: ", arrTreckList);
 //делегируем события списка песен
 
 choiceAudio = new Audio();
-//ЗАПУСКАЕТ НО НЕ ВЫКЛЮЧАЕТ!!!! ====================================
+//ЗАПУСКАЕТ И РАБОТАЕТ!!!
 var choiceAudio;
 ulTreckList.onclick = (e) => {
   e.stopPropagation();
   let srcDiv = e.target.closest("div");
   //console.log(srcDiv);
   if (srcDiv !== "") {
-    
     let srcRef = srcDiv.getAttribute("value");
     console.log("srcRef", srcRef);
     controlBtn.innerText = "Play";
     choiceAudio.src = srcRef;
-    // if (choiceAudio.paused) {
-    //   choiceAudio.play();
-    //   controlBtn.innerText = "Pause";
-    // } else {
-    //   choiceAudio.pause();
-    //   controlBtn.innerText = "Play";
-    // }
-
     treckPlayList = choiceAudio.play();
     controlBtn.innerText = "Pause";
-    //playPause();
   }
-
 }
 
 let treckPlayList;
-
 document.querySelector("#volume").onclick = audioVolume;
 function audioVolume() {
   let v = this.value;
